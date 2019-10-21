@@ -1,0 +1,7 @@
+{
+  "/jobster/*": "/$1",
+  "/companies/archived": "/archivedCompanies",
+  "/companies/deleted": "/deletedCompanies",
+  "/companies/archive": "/archivedCompanies",
+  "/companies/undelete": "/deletedCompanies"
+}

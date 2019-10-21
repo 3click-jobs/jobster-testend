@@ -1,0 +1,67 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "companies": [
+    {
+      "companyName": "Makaroni",
+      "companyRegistrationNumber": "12345678901234",
+      "mobilePhone": "381605222",
+      "email": "mail@mail.com",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "SER",
+      "countryRegion": "Vojvodina",
+      "longitude": "45.5",
+      "latitude": "45.6",
+      "about": "Something about Mary",
+      "rating": "5.6",
+      "numberOfRatings": "10",
+      "username": "makaroni",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 1
+    },
+    {
+      "companyName": "Makaroni2",
+      "companyRegistrationNumber": "12345678901234",
+      "mobilePhone": "381605222122",
+      "email": "mail@m2ail.com",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "SER",
+      "countryRegion": "Vojvodina",
+      "longitude": "45.5",
+      "latitude": "45.6",
+      "about": "Something about Mary",
+      "rating": "5.6",
+      "numberOfRatings": "10",
+      "username": "makaroni2",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 2
+    }
+  ],
+  "archivedCompanies": [
+    {
+      "id": 2,
+      "companyName": "Jobster"
+    }
+  ]
+}

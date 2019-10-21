@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "f3d3b4e4-e257-4770-b12f-b43937b70658",
+		"name": "JobsterTestend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Get all companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/jobster/users/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"jobster",
+								"users",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"companyName\": 12,\n\t\"companyRegistrationNumber\": \"12345678901234\",\n\t\"mobilePhone\": \"+381345345\",\n\t\"email\": \"alphaem@ail.com\",\n\t\"city\": \"Novi Sad\",\n\t\"country\": \"Serbia\",\n\t\"iso2Code\": \"SER\",\n\t\"accessRole\": \"ROLE_ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/jobster/users/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"jobster",
+								"users",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Utils",
+			"item": [
+				{
+					"name": "Clear database",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/clear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset database ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"reset"
+							]
+						},
+						"description": "some initial state with test values"
+					},
+					"response": []
+				},
+				{
+					"name": "Echo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/echo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"echo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
