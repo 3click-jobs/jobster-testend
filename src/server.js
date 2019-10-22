@@ -34,6 +34,7 @@ server.get('/clear', (req, res) => {
   res.jsonp({ status: 'db set to a clean state'})
 })
 
+
 server.use((req, res, next) => {
   console.log(req.path)
 

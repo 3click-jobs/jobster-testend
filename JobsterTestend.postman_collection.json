@@ -6,6 +6,100 @@
 	},
 	"item": [
 		{
+			"name": "Old",
+			"item": [
+				{
+					"name": "http://localhost:8080/jobster/accounts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"cabavarga\",\n\t\"accessRole\": \"ROLE_ADMIN\",\n\t\"password\": \"password\",\n\t\"confirmedPassword\": \"password\",\n\t\"userId\": \"111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/jobster/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobster",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/jobster/users/companies",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "cabavarga",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyName\": \"companyName\",\n    \"companyId\": 12345678901234,\n    \"mobilePhone\": 38169010015,\n    \"email\": \"eam@ail.com\",\n    \"city\": \"city\",\n    \"country\": \"country\",\n    \"iso2Code\": \"AZZ\",\n    \"countryRegion\": \"countryRegion\",\n    \"longitude\": 12.5,\n    \"latitude\": 16.54,\n    \"detailsLink\": \"detailsLink\",\n    \"rating\": 4.6,\n    \"numberOfRatings\": 15,\n    \"username\": \"user5name\",\n    \"accessRole\": \"ROLE_USER\",\n    \"password\": \"password\",\n    \"confirmedPassword\": \"password\",\n    \"companyRegistrationNumber\": 12345678901234\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/jobster/users/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobster",
+								"users",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Companies",
 			"item": [
 				{
@@ -129,6 +223,4947 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "CompanyController",
+					"item": [
+						{
+							"name": "CreateSuccess",
+							"item": [
+								{
+									"name": "createCompany",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.companyRegistrationNumber).to.eql(\"11231231231236\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyWithoutCountryRegion",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueCompanyName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company name equal Jo\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.companyName).to.eql('Jo');",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jo\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueEmail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company email equals JobsteriesJobsteriesJobsteriesJobsteriese@mail.com\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.email).to.eql(\"JobsteriesJobsteriesJobsteriesJobsteriese@mail.com\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"JobsteriesJobsteriesJobsteriesJobsteriese@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueAbout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company about equals very long string :)\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.about).to.eql(\"AboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaABABABABABABABA\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"AboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaAboutJobsteriesCompaABABABABABABABA\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueCity",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company city equals Wo\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.city).to.eql(\"Wo\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"Wo\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueCountryName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company country name is Wo\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.country).to.eql(\"Wo\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"Wo\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueIso2CodeMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company Iso code equals XX\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.iso2Code).to.eql(\"XX\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueCountryRegionName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company country reqion equals Wo\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.countryRegion).to.eql(\"Wo\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"Wo\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueLongitudeMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company longitude equals -180.0\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.longitude).to.eql(-180.0);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": -180.0,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueLongitudeMax",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company longitude equals 180.0\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.longitude).to.eql(180.0);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 180.0,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueLatitudeMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company latitude equals -90.0\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.latitude).to.eql(-90.0);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": -90.0,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueLatitudeMax",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company latitude equals 90.0\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.latitude).to.eql(90.0);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 90.0,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueUsernameMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company username equals Test5\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.username).to.eql(\"Test5\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test5\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValueUsernameMax",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company username equals Test1234567891234567\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.username).to.eql(\"Test1234567891234567\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test1234567891234567\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyMarginalValuePasswordAndConfirmedPasswordMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company password and confirmed password equal Test5\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.password).to.eql(\"Test5\");",
+													"    pm.expect(jsonData.confirmedPassword).to.eql(\"Test5\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test5\",\n    \"confirmedPassword\": \"Test5\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "CreateValidationError",
+							"item": [
+								{
+									"name": "createCompanyValidationErrorCompanyNameOneChar",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"BadRequest for Company name length 1\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    // pm.expect(jsonData.errors.companyName).to.eql(\"Company name should be at least 2 characters.\");",
+													"pm.environment.get(\"variable_key\");});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"J\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorCompanyNameContainsNotOnlyLettersAndNumbers",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"BadRequest for Company name forbidden characters\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    // pm.expect(jsonData.errors.companyName).to.eql(\"Company name should be at least 2 characters.\");",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"J&o#3!:d\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorRegistrationNumberToSmall",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company registration number equals 112312331236\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    // pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 112312331236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorRegistrationNumberToLarge",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company registration number equals 1123123123123656\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    // pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"1123123123123656\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorRegistrationNumberContainsLetter",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company registration number equals 112f1231231236\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    // pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"112f1231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorEmailWrongRegex",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"pm.test(\"Company email equals Jobsteries@mail\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    // pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"});",
+													"",
+													"pm.test(\"Content-Type is present\", function () {",
+													"    pm.response.to.have.header(\"Content-Type\");",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorPhoneRegex",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"064gf56789--01\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorEmailToLong",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"JobsteriesJobsteriesJobsteriesJobsteriesJobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorCityNameMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": 11231231231236,\n    \"city\": \"\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorCityNameRegex",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city1\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorCountryNameMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorCountryNameRegex",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union1\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorIso2CodeMin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"X\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorIso2CodeMax",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorIso2CodeRegex",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"X1X\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorCountryRegionRegex",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region1\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorLongitudeToSmall",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": -181.0,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorLongitudeToLarge",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 181.0,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorLatitudeToSmall",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": -91.0,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorLatitudeToLarge",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 91.0,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorAboutToLarge",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries, About Jobsteries.\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorUsernameToSmall",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorUsernameToLarge",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"TestTestTestTestTestTest\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorRoleWrong",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"AAAA\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorPasswordAndConfirmedPasswordToSmall",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test\",\n    \"confirmedPassword\": \"Test\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyValidationErrorPasswordAndConfirmedPasswordContainUnsupportedChars",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Te+st!12&3\",\n    \"confirmedPassword\": \"Te+st!12&3\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "CreateNullBlankSpace",
+							"item": [
+								{
+									"name": "createNullCompany",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyNullEmail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": null,\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyBlankEmail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanySpaceEmail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \" \",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyNullPhone",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": null,\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyBlankPhone",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanySpacePhone",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \" \",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyNullCompanyName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": null,\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyBlankCompanyName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanySpaceCompanyName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \" \",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyNullRegistrationNumber",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": null,\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanyBlankRegistrationNumber",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCompanySpaceRegistrationNumber",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+												"exec": [
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"    pm.response",
+													"});",
+													"",
+													"// pm.test(\"Company registration number equals 11231231231236\", function () {",
+													"//     var jsonData = pm.response.json();",
+													"//     pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+													"// });",
+													"",
+													"// pm.test(\"Content-Type is present\", function () {",
+													"//     pm.response.to.have.header(\"Content-Type\");",
+													"// });",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+												"exec": [
+													"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+													"    console.log(response.json());",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \" \",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3001/jobster/users/companies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3001",
+											"path": [
+												"jobster",
+												"users",
+												"companies"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8e161340-5bec-4bf8-bd7f-a842b1c29e73",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c6d0e79d-50ca-42fc-b849-2c066ee588f8",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "createCompany Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompanyNullCity",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCompany Copy Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a04a54e7-08af-4f22-8d2f-992240cad9f5",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    pm.response",
+											"});",
+											"",
+											"pm.test(\"Company registration number equals 11231231231236\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.companyRegistrationNumber).to.eql(11231231231236);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "239afa53-2fb2-49c4-bd18-7b947e29fc33",
+										"exec": [
+											"pm.sendRequest(\"http://localhost:3001/clear\", function (err, response) {",
+											"    console.log(response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobilePhone\": \"0645678901\",\n    \"email\": \"Jobsteries@mail.com\",\n    \"about\": \"About Jobsteries\",\n    \"companyName\": \"Jobsteries\",\n    \"companyRegistrationNumber\": \"11231231231236\",\n    \"city\": \"World city\",\n    \"country\": \"World Union\",\n    \"accessRole\": \"ROLE_USER\",\n    \"iso2Code\": \"XXX\",\n    \"countryRegion\": \"World region\",\n    \"longitude\": 43.1,\n    \"latitude\": 43.1,\n    \"username\": \"Test123\",\n    \"password\": \"Test123\",\n    \"confirmedPassword\": \"Test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/jobster/users/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"jobster",
+										"users",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}

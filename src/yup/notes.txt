@@ -1,0 +1,7 @@
+Previous version of schemas and middleware have tried to act smart - 
+  sending a nice errors object as a respones, with validation errors attached to field names.
+
+While it is a good concept and it works well with the frontend, I must try to mirror the backend 
+  both in behaviour and in messaging
+  behaviour -> validation rules
+  messaging -> statuses and error responses
