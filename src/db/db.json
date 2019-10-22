@@ -4,6 +4,25 @@
   "profile": {
     "name": "typicode"
   },
-  "companies": [],
+  "companies": [
+    {
+      "mobilePhone": "0645678901",
+      "email": "Jobsteries@mail.com",
+      "about": "About Jobsteries",
+      "companyName": "Jobsteries",
+      "companyRegistrationNumber": 11231231231236,
+      "city": "World city",
+      "country": "World Union",
+      "accessRole": "ROLE_USER",
+      "iso2Code": "XXX",
+      "countryRegion": "World region",
+      "longitude": 43.1,
+      "latitude": 43.1,
+      "username": "Test123",
+      "password": "Test5",
+      "confirmedPassword": "Test5",
+      "id": 1
+    }
+  ],
   "archivedCompanies": []
 }
