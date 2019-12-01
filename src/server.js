@@ -3,8 +3,6 @@ const server = jsonServer.create()
 const router = jsonServer.router('src/db/db.json')
 const middlewares = jsonServer.defaults()
 
-
-
 import dbmiddleware from './dbqueries/dbmiddleware'
 import { dbschemas } from './dbqueries/dbschemas'
 
@@ -12,6 +10,7 @@ const middleware = require('./yup/middleware')
 import schemas from './yup/schemas'
 
 import { reset, clear } from './dbutils/dbutils'
+import { verifyCredentials } from './dbqueries/authentication'
 
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
@@ -25,15 +24,23 @@ server.get('/echo', (req, res) => {
 server.get('/reset', (req, res) => {
   reset()
   router.db.read('src/db/db.json')
-  res.jsonp({ status: 'db reset to init state'})
+  res.jsonp({ status: 'db reset to init state' })
 })
 
 server.get('/clear', (req, res) => {
   clear()
   router.db.read('src/db/db.json')
-  res.jsonp({ status: 'db set to a clean state'})
+  res.jsonp({ status: 'db set to a clean state' })
 })
 
+server.get('/verify', (req, res) => {
+  const result = verifyCredentials(req.headers.authorization)
+  if (result.error) {
+    res.status(404).jsonp({...result})
+  } else {
+    res.jsonp({...result})
+  }
+})
 
 server.use((req, res, next) => {
   console.log(req.path)
@@ -46,7 +53,7 @@ server.use((req, res, next) => {
         if (!middleware(schemas.registerCompany)(req, res, next)) {
           return
         }
-        
+
         if (!dbmiddleware(dbschemas.registerCompany, 'companies')(req, res, next)) {
           return
         }
@@ -63,6 +70,43 @@ server.use((req, res, next) => {
         // check if username exists
 
         // number format exceptions
+        break
+      }
+      case '/jobster/users/persons': {
+        // dto validation
+
+        if (!middleware(schemas.registerPerson)(req, res, next)) {
+          return
+        }
+
+        if (!dbmiddleware(dbschemas.registerPerson, 'persons')(req, res, next)) {
+          return
+        }
+        // if (res.status) return
+
+        // check if email exists with companies
+
+        // check if mobile phone exists
+
+        // check if company id (companyRegistrationNumber) exists
+
+        // check if access role is ROLE_USER
+
+        // check if username exists
+
+        // number format exceptions
+        break
+      }
+      case '/jobster/accounts': {
+
+        if (!middleware(schemas.registerAccount)(req, res, next)) {
+          return
+        }
+
+        if (!dbmiddleware(dbschemas.registerAccount, 'accounts')(req, res, next)) {
+          return
+        }
+        break
       }
       default: {
         break
@@ -86,7 +130,12 @@ server.use(jsonServer.rewriter({
   '/jobster/users/companies/deleted': '/companiesDeleted',
   '/jobster/users/companies/deleted/:id': '/companiesDeleted/:id',
   '/jobster/users/companies/undelete/:id': '/companiesDeleted/:id',
-
+  // persons
+  '/jobster/users/persons': '/persons',
+  '/jobster/users/persons/:id': '/persons/:id',
+  // accounts
+  '/jobster/accounts': '/accounts',
+  '/jobster/accounts/:id': '/accounts/:id',
 }))
 
 server.use(router)

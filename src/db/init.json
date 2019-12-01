@@ -63,5 +63,11 @@
       "id": 2,
       "companyName": "Jobster"
     }
-  ]
+  ],
+  "persons": [
+    {
+
+    }
+  ],
+  "accounts": []
 }

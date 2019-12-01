@@ -10,7 +10,7 @@
       "email": "Jobsteries@mail.com",
       "about": "About Jobsteries",
       "companyName": "Jobsteries",
-      "companyRegistrationNumber": 11231231231236,
+      "companyRegistrationNumber": "11231231231236",
       "city": "World city",
       "country": "World Union",
       "accessRole": "ROLE_USER",
@@ -19,10 +19,81 @@
       "longitude": 43.1,
       "latitude": 43.1,
       "username": "Test123",
-      "password": "Test5",
-      "confirmedPassword": "Test5",
+      "password": "Test123",
+      "confirmedPassword": "Test123",
       "id": 1
     }
   ],
-  "archivedCompanies": []
+  "archivedCompanies": [],
+  "persons": [
+    {
+      "firstName": "Pera",
+      "lastName": "Peric",
+      "mobilePhone": "0645678902",
+      "email": "Jobsteries@maiss.com",
+      "about": "About Jobsteries",
+      "city": "World city",
+      "country": "World Union",
+      "accessRole": "ROLE_USER",
+      "iso2Code": "XXX",
+      "countryRegion": "World region",
+      "longitude": 43.1,
+      "latitude": 43.1,
+      "username": "Test123",
+      "password": "Test123",
+      "confirmedPassword": "Test123",
+      "id": 1
+    }
+  ],
+  "accounts": [
+    {
+      "username": "Test123",
+      "accessRole": "ROLE_USER",
+      "password": "Test123",
+      "confirmedPassword": "Test123",
+      "id": 1
+    },
+    {
+      "username": "Test1234",
+      "accessRole": "ROLE_USER",
+      "password": "Test123",
+      "confirmedPassword": "Test123",
+      "id": 2
+    },
+    {
+      "username": "peraperic",
+      "accessRole": "ROLE_ADMIN",
+      "password": "Test123",
+      "confirmedPassword": "Test123",
+      "id": 3
+    },
+    {
+      "username": "tralalalla",
+      "password": "tralala3",
+      "confirmedPassword": "tralala3",
+      "accessRole": "ROLE_USER",
+      "id": 4
+    },
+    {
+      "username": "Varga Csaba",
+      "password": "tralalala",
+      "confirmedPassword": "tralalala",
+      "accessRole": "ROLE_USER",
+      "id": 5
+    },
+    {
+      "username": "peraperica",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 6
+    },
+    {
+      "username": "peraperic78",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 7
+    }
+  ]
 }

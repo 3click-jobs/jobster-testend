@@ -77,7 +77,6 @@ Yup.addMethod(Yup.string, 'isParsableToFloat', function (message) {
 
 const dbschemas = {
   registerCompany: Yup.object().shape({
-
     email: Yup.string()
       .isDuplicate('Email has been used. Choose another email.'),
     mobilePhone: Yup.string()
@@ -92,9 +91,26 @@ const dbschemas = {
       .isParsableToInt('Number conversion error'),
     accessRole: Yup.string()
       .oneOf(['ROLE_USER'], 'Access role MUST be of a user.')
-
-
-
+  }),
+  registerPerson: Yup.object().shape({
+    email: Yup.string()
+      .isDuplicate('Email has been used. Choose another email.'),
+    mobilePhone: Yup.string()
+      .isDuplicate('Mobile phone is alredy registered. You cannot register multiple companies with one mobile phone.'),
+    companyName: Yup.string()
+      .isDuplicate('Duplicate Company name is not allowed'),
+    username: Yup.string()
+      .isDuplicate('Username exists. Choose another username.'),
+    // id: Yup.number()
+    //   .isDuplicate('Duplicate Id not allowed'),
+    // companyRegistrationNumber: Yup.string()
+    //   .isParsableToInt('Number conversion error'),
+    accessRole: Yup.string()
+      .oneOf(['ROLE_USER'], 'Access role MUST be of a user.')
+  }),
+  registerAccount: Yup.object().shape({
+    username: Yup.string()
+      .isDuplicate('Username exists. Choose another username.') 
   })
 };
 
