@@ -4,96 +4,44 @@
   "profile": {
     "name": "typicode"
   },
-  "companies": [
-    {
-      "mobilePhone": "0645678901",
-      "email": "Jobsteries@mail.com",
-      "about": "About Jobsteries",
-      "companyName": "Jobsteries",
-      "companyRegistrationNumber": "11231231231236",
-      "city": "World city",
-      "country": "World Union",
-      "accessRole": "ROLE_USER",
-      "iso2Code": "XXX",
-      "countryRegion": "World region",
-      "longitude": 43.1,
-      "latitude": 43.1,
-      "username": "Test123",
-      "password": "Test123",
-      "confirmedPassword": "Test123",
-      "id": 1
-    }
-  ],
+  "companies": [],
   "archivedCompanies": [],
-  "persons": [
-    {
-      "firstName": "Pera",
-      "lastName": "Peric",
-      "mobilePhone": "0645678902",
-      "email": "Jobsteries@maiss.com",
-      "about": "About Jobsteries",
-      "city": "World city",
-      "country": "World Union",
-      "accessRole": "ROLE_USER",
-      "iso2Code": "XXX",
-      "countryRegion": "World region",
-      "longitude": 43.1,
-      "latitude": 43.1,
-      "username": "Test123",
-      "password": "Test123",
-      "confirmedPassword": "Test123",
-      "id": 1
-    }
-  ],
+  "persons": [],
   "accounts": [
     {
-      "username": "Test123",
+      "username": "peraperic",
+      "password": "password",
+      "confirmedPassword": "password",
       "accessRole": "ROLE_USER",
-      "password": "Test123",
-      "confirmedPassword": "Test123",
       "id": 1
     },
     {
-      "username": "Test1234",
+      "username": "ivaivic",
+      "password": "password",
+      "confirmedPassword": "password",
       "accessRole": "ROLE_USER",
-      "password": "Test123",
-      "confirmedPassword": "Test123",
       "id": 2
     },
     {
-      "username": "peraperic",
-      "accessRole": "ROLE_ADMIN",
-      "password": "Test123",
-      "confirmedPassword": "Test123",
+      "username": "zorica",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
       "id": 3
     },
     {
-      "username": "tralalalla",
-      "password": "tralala3",
-      "confirmedPassword": "tralala3",
+      "username": "cabacaba",
+      "password": "password",
+      "confirmedPassword": "password",
       "accessRole": "ROLE_USER",
       "id": 4
     },
     {
-      "username": "Varga Csaba",
-      "password": "tralalala",
-      "confirmedPassword": "tralalala",
+      "username": "tinder",
+      "password": "password",
+      "confirmedPassword": "password",
       "accessRole": "ROLE_USER",
       "id": 5
-    },
-    {
-      "username": "peraperica",
-      "password": "password",
-      "confirmedPassword": "password",
-      "accessRole": "ROLE_USER",
-      "id": 6
-    },
-    {
-      "username": "peraperic78",
-      "password": "password",
-      "confirmedPassword": "password",
-      "accessRole": "ROLE_USER",
-      "id": 7
     }
   ]
 }
