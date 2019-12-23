@@ -16,46 +16,495 @@
   "profile": {
     "name": "typicode"
   },
-  "companies": [
+  "jobTypes": [
     {
-      "companyName": "Makaroni",
-      "companyRegistrationNumber": "12345678901234",
-      "mobilePhone": "381605222",
-      "email": "mail@mail.com",
+      "jobTypeName": "Mesar",
+      "id": 1
+    },
+    {
+      "jobTypeName": "Tesar",
+      "id": 2
+    },
+    {
+      "jobTypeName": "Zidar",
+      "id": 3
+    },
+    {
+      "jobTypeName": "Keramicar",
+      "id": 4
+    },
+    {
+      "jobTypeName": "Varilac",
+      "id": 5
+    },
+    {
+      "jobTypeName": "Cistacica",
+      "id": 6
+    },
+    {
+      "jobTypeName": "Bagerista",
+      "id": 7
+    },
+    {
+      "jobTypeName": "Vozac",
+      "id": 8
+    }
+  ],
+  "seeks": [
+    {
+      "employee": {
+        "firstName": "Perka",
+        "lastName": "Perkic",
+        "gender": "GENDER_FEMALE",
+        "birthDate": "2000-01-01",
+        "mobilePhone": "381607772122",
+        "email": "mail777@m2ail.com",
+        "city": "Sremski Karlovci",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.93373",
+        "latitude": "45.20285",
+        "about": "Something about Perka",
+        "username": "perka",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 3
+      },
+      "beginningDate": "2019-12-22",
+      "city": "Temerin",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.88917",
+      "latitude": "45.40861",
+      "detailsLink": "Kao nesto da se radi",
+      "distanceToJob": 0,
+      "endDate": "2020-03-03",
+      "flexibileDates": true,
+      "flexibileDays": true,
+      "jobType": {
+          "jobTypeName": "Mesar",
+          "id": 1
+      },
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": true,
+          "fromHour": 3,
+          "isMinMax": true,
+          "toHour": 8,
+          "id": 1
+        }
+      ],
+      "price": 200,
+      "id": 1
+    },
+    {
+      "employee": {
+        "firstName": "PeraWWW",
+        "lastName": "Peric",
+        "gender": "GENDER_MALE",
+        "birthDate": "2000-12-12",
+        "mobilePhone": "381605228882",
+        "email": "mail888@m2ail.com",
+        "city": "Tavankut",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.48721",
+        "latitude": "46.04843",
+        "about": "Something about WWW",
+        "username": "perawww",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 4
+        },
+      "beginningDate": "2019-12-18",
+      "city": "Maradik",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.99284",
+      "latitude": "45.10142",
+      "detailsLink": "Kao nesto da se radi 1",
+      "distanceToJob": 0,
+      "endDate": "2020-02-14",
+      "flexibileDates": false,
+      "flexibileDays": true,
+      "jobType": {
+        "jobTypeName": "Zidar",
+        "id": 3
+      },
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 2
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 3
+        }
+      ],
+      "price": 200,
+      "id": 2
+    },
+    {
+      "employee": {
+        "firstName": "Peradija",
+        "lastName": "Pericija",
+        "gender": "GENDER_FEMALE",
+        "birthDate": "2019-12-18",
+        "mobilePhone": "381605442122",
+        "email": "mail4455@m2ail.com",
+        "city": "Novi Sad",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.83694",
+        "latitude": "45.25167",
+        "about": "Something about Peradija",
+        "username": "peradija",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 2
+      },
+      "beginningDate": "2019-12-30",
       "city": "Novi Sad",
       "country": "Serbia",
-      "iso2Code": "SER",
+      "iso2Code": "RS",
       "countryRegion": "Vojvodina",
-      "longitude": "45.5",
-      "latitude": "45.6",
-      "about": "Something about Mary",
-      "rating": "5.6",
-      "numberOfRatings": "10",
-      "username": "makaroni",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "detailsLink": "Kao nesto da se radi 2",
+      "distanceToJob": 0,
+      "endDate": "2020-01-10",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "jobType": {
+        "jobTypeName": "Tesar",
+        "id": 2
+      },
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_TUESDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 4
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 5
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "isMinMax": true,
+          "toHour": 5,
+          "id": 6
+        },
+        {
+          "day": "DAY_SATURDAY",
+          "flexibileHours": true,
+          "fromHour": 1,
+          "isMinMax": true,
+          "toHour": 8,
+          "id": 7
+        }
+      ],
+      "price": 180,
+      "id": 3
+    }
+  ],
+  "offers": [
+    {
+      "employer": {
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "mobilePhone": "381644442122",
+        "email": "mail144@m21ail.com",
+        "city": "Temerin",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.88917",
+        "latitude": "45.40861",
+        "about": "Something about JobsterDOOD",
+        "username": "jobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 3
+      },
+      "beginningDate": "2019-12-22",
+      "city": "Temerin",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.88917",
+      "latitude": "45.40861",
+      "endDate": "2020-03-03",
+      "flexibileDates": true,
+      "flexibileDays": true,
+      "jobType": {
+        "jobTypeName": "Mesar",
+        "id": 1
+      },
+      "numberOfEmployees": 5,
+      "detailsLink": "Nesto o poslu",
+      "elapse": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": true,
+          "fromHour": 3,
+          "isMinMax": true,
+          "toHour": 8,
+          "id": 8
+        }
+      ],
+      "price": 200,
+      "id": 1
+    },
+    {
+      "employer": {
+        "companyName": "JobsterLTDJP",
+        "companyRegistrationNumber": "12345678977745",
+        "mobilePhone": "381645247772",
+        "email": "mail1777@m21ail.com",
+        "city": "Maradik",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.99284",
+        "latitude": "45.10142",
+        "about": "Something about JobsterLTDJP",
+        "username": "jobsterLTDJP",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 5
+      },
+      "beginningDate": "2019-12-18",
+      "city": "Maradik",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.99284",
+      "latitude": "45.10142",
+      "endDate": "2020-02-14",
+      "flexibileDates": false,
+      "flexibileDays": true,
+      "jobType": {
+        "jobTypeName": "Zidar",
+        "id": 3
+      },
+      "numberOfEmployees": 8,
+      "detailsLink": "Nesto o poslu 1",
+      "elapse": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 9
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 10
+        }
+      ],
+      "price": 200,
+      "id": 2
+    },
+    {
+      "employer": {
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "mobilePhone": "381644442122",
+        "email": "mail144@m21ail.com",
+        "city": "Temerin",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.88917",
+        "latitude": "45.40861",
+        "about": "Something about JobsterDOOD",
+        "username": "jobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 3
+      },
+      "beginningDate": "2019-12-30",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "endDate": "2020-01-10",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "jobType": {
+        "jobTypeName": "Tesar",
+        "id": 2
+      },
+      "numberOfEmployees": 29,
+      "detailsLink": "Nesto o poslu 2",
+      "elapse": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_TUESDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 11
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 12
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "isMinMax": true,
+          "toHour": 5,
+          "id": 13
+        },
+        {
+          "day": "DAY_SATURDAY",
+          "flexibileHours": true,
+          "fromHour": 1,
+          "isMinMax": true,
+          "toHour": 8,
+          "id": 14
+        }
+      ],
+      "price": 180,
+      "id": 3
+    }
+  ],
+  "companies": [
+    {
+      "companyName": "JobsterLTD",
+      "companyRegistrationNumber": "12345678912345",
+      "mobilePhone": "381645242122",
+      "email": "mail1@m21ail.com",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "about": "Something about Jobster",
+      "username": "jobster",
       "accessRole": "ROLE_USER",
       "password": "password",
       "confirmedPassword": "password",
       "id": 1
     },
     {
-      "companyName": "Makaroni2",
-      "companyRegistrationNumber": "12345678901234",
-      "mobilePhone": "381605222122",
-      "email": "mail@m2ail.com",
+      "companyName": "JobDOO",
+      "companyRegistrationNumber": "12345678912346",
+      "mobilePhone": "381645242128",
+      "email": "mail122@m21ail.com",
       "city": "Novi Sad",
       "country": "Serbia",
-      "iso2Code": "SER",
+      "iso2Code": "RS",
       "countryRegion": "Vojvodina",
-      "longitude": "45.5",
-      "latitude": "45.6",
-      "about": "Something about Mary",
-      "rating": "5.6",
-      "numberOfRatings": "10",
-      "username": "makaroni2",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "about": "Something about Job",
+      "username": "jobster1",
       "accessRole": "ROLE_USER",
       "password": "password",
       "confirmedPassword": "password",
       "id": 2
+    },
+    {
+      "companyName": "JobsterDOOD",
+      "companyRegistrationNumber": "12344478912345",
+      "mobilePhone": "381644442122",
+      "email": "mail144@m21ail.com",
+      "city": "Temerin",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.88917",
+      "latitude": "45.40861",
+      "about": "Something about JobsterDOOD",
+      "username": "jobsterDOOD",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 3
+    },
+    {
+      "companyName": "JobsterLTDDOO",
+      "companyRegistrationNumber": "12345675552345",
+      "mobilePhone": "381645555122",
+      "email": "mail1555@m21ail.com",
+      "city": "Belgrade",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Central Serbia",
+      "longitude": "20.46513",
+      "latitude": "44.80401",
+      "about": "Something about JobsterLTDDOO",
+      "username": "jobsterLTDDOO",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 4
+    },
+    {
+      "companyName": "JobsterLTDJP",
+      "companyRegistrationNumber": "12345678977745",
+      "mobilePhone": "381645247772",
+      "email": "mail1777@m21ail.com",
+      "city": "Maradik",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.99284",
+      "latitude": "45.10142",
+      "about": "Something about JobsterLTDJP",
+      "username": "jobsterLTDJP",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 5
     }
   ],
   "archivedCompanies": [
@@ -66,8 +515,135 @@
   ],
   "persons": [
     {
-
+      "firstName": "Pera",
+      "lastName": "Peric",
+      "gender": "GENDER_MALE",
+      "birthDate": "2000-12-12",
+      "mobilePhone": "381605222122",
+      "email": "mail@m2ail.com",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "about": "Something about Mary",
+      "username": "makaroni2",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 1
+    },
+    {
+      "firstName": "Peradija",
+      "lastName": "Pericija",
+      "gender": "GENDER_FEMALE",
+      "birthDate": "2019-12-18",
+      "mobilePhone": "381605442122",
+      "email": "mail4455@m2ail.com",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "about": "Something about Peradija",
+      "username": "peradija",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 2
+    },
+    {
+      "firstName": "Perka",
+      "lastName": "Perkic",
+      "gender": "GENDER_FEMALE",
+      "birthDate": "2000-01-01",
+      "mobilePhone": "381607772122",
+      "email": "mail777@m2ail.com",
+      "city": "Sremski Karlovci",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.93373",
+      "latitude": "45.20285",
+      "about": "Something about Perka",
+      "username": "perka",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 3
+    },
+    {
+      "firstName": "PeraWWW",
+      "lastName": "Peric",
+      "gender": "GENDER_MALE",
+      "birthDate": "2000-12-12",
+      "mobilePhone": "381605228882",
+      "email": "mail888@m2ail.com",
+      "city": "Tavankut",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.48721",
+      "latitude": "46.04843",
+      "about": "Something about WWW",
+      "username": "perawww",
+      "accessRole": "ROLE_USER",
+      "password": "password",
+      "confirmedPassword": "password",
+      "id": 4
     }
   ],
-  "accounts": []
+  "accounts": [
+    {
+      "username": "peraperic",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 1
+    },
+    {
+      "username": "ivaivic",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 2
+    },
+    {
+      "username": "zorica",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 3
+    },
+    {
+      "username": "cabacaba",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 4
+    },
+    {
+      "username": "tinder",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 5
+    },
+    {
+      "username": "jobster",
+      "password": "password",
+      "confirmedPassword": "password",
+      "accessRole": "ROLE_USER",
+      "id": 6
+    },
+    {
+      "username": "ggggg",
+      "password": "ggggg",
+      "confirmedPassword": "ggggg",
+      "accessRole": "ROLE_USER",
+      "id": 7
+    }
+  ]
 }
