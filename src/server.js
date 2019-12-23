@@ -108,6 +108,39 @@ server.use((req, res, next) => {
         }
         break
       }
+      case '/jobster/jobTypes': {
+
+        if (!middleware(schemas.registerJobType)(req, res, next)) {
+          return
+        }
+
+        if (!dbmiddleware(dbschemas.registerJobType, 'jobTypes')(req, res, next)) {
+          return
+        }
+        break
+      }
+      case '/jobster/seeks': {
+
+        if (!middleware(schemas.registerSeek)(req, res, next)) {
+          return
+        }
+
+        if (!dbmiddleware(dbschemas.registerSeek, 'seeks')(req, res, next)) {
+          return
+        }
+        break
+      }
+      case '/jobster/offers': {
+
+        if (!middleware(schemas.registerOffer)(req, res, next)) {
+          return
+        }
+
+        if (!dbmiddleware(dbschemas.registerOffer, 'offers')(req, res, next)) {
+          return
+        }
+        break
+      }
       default: {
         break
       }
@@ -136,6 +169,15 @@ server.use(jsonServer.rewriter({
   // accounts
   '/jobster/accounts': '/accounts',
   '/jobster/accounts/:id': '/accounts/:id',
+  // jobTypes
+  '/jobster/jobTypes': '/jobTypes',
+  '/jobster/jobTypes/:id': '/jobTypes/:id',
+  // seek
+  '/jobster/seeks': '/seeks',
+  '/jobster/seeks/:id': '/seeks/:id',  
+  // offer
+  '/jobster/offers': '/offers',
+  '/jobster/offers/:id': '/offers/:id',    
 }))
 
 server.use(router)
