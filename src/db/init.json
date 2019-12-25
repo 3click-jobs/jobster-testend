@@ -232,6 +232,130 @@
       ],
       "price": 180,
       "id": 3
+    },
+    {
+      "employee": {
+        "firstName": "Peradija",
+        "lastName": "Pericija",
+        "gender": "GENDER_FEMALE",
+        "birthDate": "2019-12-18",
+        "mobilePhone": "381605442122",
+        "email": "mail4455@m2ail.com",
+        "city": "Novi Sad",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.83694",
+        "latitude": "45.25167",
+        "about": "Something about Peradija",
+        "username": "peradija",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 2
+      },
+      "beginningDate": "2020-01-03",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "detailsLink": "Kao nesto da se radi 2",
+      "distanceToJob": 100,
+      "endDate": "2020-01-22",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "jobType": {
+        "jobTypeName": "Zidar",
+        "id": 3
+      },
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 8
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 9
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "isMinMax": true,
+          "toHour": 5,
+          "id": 10
+        }
+      ],
+      "price": 380,
+      "id": 4
+    },
+    {
+      "employee": {
+        "firstName": "Peradija",
+        "lastName": "Pericija",
+        "gender": "GENDER_FEMALE",
+        "birthDate": "2019-12-18",
+        "mobilePhone": "381605442122",
+        "email": "mail4455@m2ail.com",
+        "city": "Novi Sad",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.83694",
+        "latitude": "45.25167",
+        "about": "Something about Peradija",
+        "username": "peradija",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 2
+      },
+      "beginningDate": "2020-01-30",
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "detailsLink": "Kao nesto da se radi 2",
+      "distanceToJob": 30,
+      "endDate": "2020-02-22",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "jobType": {
+        "jobTypeName": "Mesar",
+        "id": 1
+      },
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_SUNDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "isMinMax": true,
+          "toHour": 5,
+          "id": 11
+        },
+        {
+          "day": "DAY_SATURDAY",
+          "flexibileHours": true,
+          "fromHour": 1,
+          "isMinMax": true,
+          "toHour": 8,
+          "id": 12
+        }
+      ],
+      "price": 770,
+      "id": 5
     }
   ],
   "offers": [
@@ -413,6 +537,144 @@
       ],
       "price": 180,
       "id": 3
+    },
+    {
+      "employer": {
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "mobilePhone": "381644442122",
+        "email": "mail144@m21ail.com",
+        "city": "Temerin",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.88917",
+        "latitude": "45.40861",
+        "about": "Something about JobsterDOOD",
+        "username": "jobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 3
+      },
+      "beginningDate": "2020-01-03",
+      "city": "Temerin",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.88917",
+      "latitude": "45.40861",
+      "endDate": "2020-02-11",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "jobType": {
+        "jobTypeName": "Zidar",
+        "id": 3
+      },
+      "numberOfEmployees": 12,
+      "detailsLink": "Nesto o poslu 3",
+      "elapse": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_TUESDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 15
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 16
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "isMinMax": true,
+          "toHour": 5,
+          "id": 17
+        }
+      ],
+      "price": 280,
+      "id": 4
+    },
+    {
+      "employer": {
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "mobilePhone": "381644442122",
+        "email": "mail144@m21ail.com",
+        "city": "Temerin",
+        "country": "Serbia",
+        "iso2Code": "RS",
+        "countryRegion": "Vojvodina",
+        "longitude": "19.88917",
+        "latitude": "45.40861",
+        "about": "Something about JobsterDOOD",
+        "username": "jobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "password": "password",
+        "confirmedPassword": "password",
+        "id": 3
+      },
+      "beginningDate": "2020-01-15",
+      "city": "Belgrade",
+      "country": "Serbia",
+      "iso2Code": "RS",
+      "countryRegion": "Central Serbia",
+      "longitude": "20.46513",
+      "latitude": "44.80401",
+      "endDate": "2020-05-24",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "jobType": {
+        "jobTypeName": "Mesar",
+        "id": 1
+      },
+      "numberOfEmployees": 7,
+      "detailsLink": "Nesto o poslu 4",
+      "elapse": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 4,
+          "isMinMax": true,
+          "toHour": 12,
+          "id": 18
+        },
+        {
+          "day": "DAY_TUESDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "isMinMax": false,
+          "toHour": 19,
+          "id": 20
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "isMinMax": true,
+          "toHour": 5,
+          "id": 21
+        }
+      ],
+      "price": 680,
+      "id": 5
     }
   ],
   "companies": [
