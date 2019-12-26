@@ -111,7 +111,18 @@ const dbschemas = {
   registerAccount: Yup.object().shape({
     username: Yup.string()
       .isDuplicate('Username exists. Choose another username.') 
-  })
+  }),
+  registerCity: Yup.object().shape({
+  }),
+  registerSeek: Yup.object().shape({
+  }),
+  registerOffer: Yup.object().shape({
+  }),
+  registerJobType: Yup.object().shape({
+    jobTypeName: Yup.string()
+      .isDuplicate('Job type exists.') 
+  }),
+
 };
 
 export { dbschemas }
