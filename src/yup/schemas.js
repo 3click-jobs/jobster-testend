@@ -198,6 +198,7 @@ const schemas = {
     flexibileDays: Yup.boolean(),
     detailsLink: Yup.string()
       .nullable()
+      .matches(/^.{0,255}$/, 'Details must be 255 characters or lower!.')
       .required('Details must be provided.'),
     price: Yup.number()
       .nullable()
@@ -242,6 +243,7 @@ const schemas = {
     flexibileDays: Yup.boolean(),
     detailsLink: Yup.string()
       .nullable()
+      .matches(/^.{0,255}$/, 'Details must be 255 characters or lower!.')
       .required('Details must be provided.'),
     price: Yup.number()
       .nullable()

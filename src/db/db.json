@@ -348,6 +348,204 @@
       ],
       "price": 770,
       "id": 5
+    },
+    {
+      "employee": {
+        "about": "Something about WWW",
+        "accessRole": "ROLE_USER",
+        "birthDate": "2000-12-12",
+        "city": "Tavankut",
+        "confirmedPassword": "password",
+        "country": "Serbia",
+        "countryRegion": "Vojvodina",
+        "email": "mail888@m2ail.com",
+        "firstName": "PeraWWW",
+        "gender": "GENDER_MALE",
+        "id": 4,
+        "iso2Code": "RS",
+        "lastName": "Peric",
+        "latitude": "46.04843",
+        "longitude": "19.48721",
+        "mobilePhone": "381605228882",
+        "password": "password",
+        "username": "perawww"
+      },
+      "jobType": {
+        "jobTypeName": "Keramicar",
+        "id": 4
+      },
+      "detailsLink": "Kao nesto da se radi kao dodatni posao i zaradi malo.",
+      "distanceToJob": "10",
+      "price": "999",
+      "beginningDate": "2019-12-26",
+      "endDate": "2020-01-15",
+      "flexibileDates": false,
+      "flexibileDays": true,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "id": 28,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "id": 29,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "id": 30,
+          "isMinMax": true,
+          "toHour": 5
+        }
+      ],
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "iso2Code": "RS",
+      "id": 6
+    },
+    {
+      "employee": {
+        "about": "Something about WWW",
+        "accessRole": "ROLE_USER",
+        "birthDate": "2000-12-12",
+        "city": "Tavankut",
+        "confirmedPassword": "password",
+        "country": "Serbia",
+        "countryRegion": "Vojvodina",
+        "email": "mail888@m2ail.com",
+        "firstName": "PeraWWW",
+        "gender": "GENDER_MALE",
+        "id": 4,
+        "iso2Code": "RS",
+        "lastName": "Peric",
+        "latitude": "46.04843",
+        "longitude": "19.48721",
+        "mobilePhone": "381605228882",
+        "password": "password",
+        "username": "perawww"
+      },
+      "jobType": {
+        "jobTypeName": "Varilac",
+        "id": 5
+      },
+      "detailsLink": "Kad fali varilaca da zaradim nesto sa strane.",
+      "distanceToJob": 0,
+      "price": "1800",
+      "beginningDate": "2019-12-26",
+      "endDate": "2020-01-30",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "id": 28,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "id": 29,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "id": 30,
+          "isMinMax": true,
+          "toHour": 5
+        }
+      ],
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "iso2Code": "RS",
+      "id": 7
+    },
+    {
+      "employee": {
+        "about": "Something about WWW",
+        "accessRole": "ROLE_USER",
+        "birthDate": "2000-12-12",
+        "city": "Tavankut",
+        "confirmedPassword": "password",
+        "country": "Serbia",
+        "countryRegion": "Vojvodina",
+        "email": "mail888@m2ail.com",
+        "firstName": "PeraWWW",
+        "gender": "GENDER_MALE",
+        "id": 4,
+        "iso2Code": "RS",
+        "lastName": "Peric",
+        "latitude": "46.04843",
+        "longitude": "19.48721",
+        "mobilePhone": "381605228882",
+        "password": "password",
+        "username": "perawww"
+      },
+      "jobType": {
+        "jobTypeName": "Vozac",
+        "id": 8
+      },
+      "detailsLink": "Nisam otisao u Nemacku, pa trazim dobro placen posao.",
+      "distanceToJob": "50",
+      "price": "555",
+      "beginningDate": "2020-01-20",
+      "endDate": "2020-04-30",
+      "flexibileDates": true,
+      "flexibileDays": true,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "id": 28,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "id": 29,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "id": 30,
+          "isMinMax": true,
+          "toHour": 5
+        }
+      ],
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "iso2Code": "RS",
+      "id": 8
     }
   ],
   "offers": [
@@ -667,6 +865,201 @@
       ],
       "price": 680,
       "id": 5
+    },
+    {
+      "employer": {
+        "about": "Something about JobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "city": "Temerin",
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "confirmedPassword": "password",
+        "country": "Serbia",
+        "countryRegion": "Vojvodina",
+        "email": "mail144@m21ail.com",
+        "id": 3,
+        "iso2Code": "RS",
+        "latitude": "45.40861",
+        "longitude": "19.88917",
+        "mobilePhone": "381644442122",
+        "password": "password",
+        "username": "jobsterDOOD"
+      },
+      "jobType": {
+        "jobTypeName": "Full-stack developer",
+        "id": 9
+      },
+      "detailsLink": "Fali nam ljudi, ali slabo placamo.",
+      "numberOfEmployees": "12",
+      "price": "13",
+      "elapse": false,
+      "beginningDate": "2019-12-30",
+      "endDate": "2020-06-30",
+      "flexibileDates": true,
+      "flexibileDays": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "id": 28,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "id": 29,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "id": 30,
+          "isMinMax": true,
+          "toHour": 5
+        }
+      ],
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "iso2Code": "RS",
+      "id": 6
+    },
+    {
+      "employer": {
+        "about": "Something about JobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "city": "Temerin",
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "confirmedPassword": "password",
+        "country": "Serbia",
+        "countryRegion": "Vojvodina",
+        "email": "mail144@m21ail.com",
+        "id": 3,
+        "iso2Code": "RS",
+        "latitude": "45.40861",
+        "longitude": "19.88917",
+        "mobilePhone": "381644442122",
+        "password": "password",
+        "username": "jobsterDOOD"
+      },
+      "jobType": {
+        "jobTypeName": "Cistacica",
+        "id": 6
+      },
+      "detailsLink": "Pupinova palata cela da se cisti.",
+      "numberOfEmployees": "9",
+      "price": "5",
+      "elapse": false,
+      "beginningDate": "2020-01-15",
+      "endDate": "2020-04-21",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "id": 28,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "id": 29,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "id": 30,
+          "isMinMax": true,
+          "toHour": 5
+        }
+      ],
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "iso2Code": "RS",
+      "id": 7
+    },
+    {
+      "employer": {
+        "about": "Something about JobsterDOOD",
+        "accessRole": "ROLE_USER",
+        "city": "Temerin",
+        "companyName": "JobsterDOOD",
+        "companyRegistrationNumber": "12344478912345",
+        "confirmedPassword": "password",
+        "country": "Serbia",
+        "countryRegion": "Vojvodina",
+        "email": "mail144@m21ail.com",
+        "id": 3,
+        "iso2Code": "RS",
+        "latitude": "45.40861",
+        "longitude": "19.88917",
+        "mobilePhone": "381644442122",
+        "password": "password",
+        "username": "jobsterDOOD"
+      },
+      "jobType": {
+        "jobTypeName": "Vozac",
+        "id": 8
+      },
+      "detailsLink": "Placamo koliko god se trazi, stoji nam 10 kamiona.",
+      "numberOfEmployees": "10",
+      "price": "8888",
+      "elapse": false,
+      "beginningDate": "2019-12-25",
+      "endDate": "2022-10-31",
+      "flexibileDates": false,
+      "flexibileDays": false,
+      "listJobDayHoursPostDto": [
+        {
+          "day": "DAY_MONDAY",
+          "flexibileHours": false,
+          "fromHour": 16,
+          "id": 28,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_THURSDAY",
+          "flexibileHours": true,
+          "fromHour": 16,
+          "id": 29,
+          "isMinMax": false,
+          "toHour": 19
+        },
+        {
+          "day": "DAY_FRIDAY",
+          "flexibileHours": true,
+          "fromHour": 2,
+          "id": 30,
+          "isMinMax": true,
+          "toHour": 5
+        }
+      ],
+      "city": "Novi Sad",
+      "country": "Serbia",
+      "countryRegion": "Vojvodina",
+      "longitude": "19.83694",
+      "latitude": "45.25167",
+      "iso2Code": "RS",
+      "id": 8
     }
   ],
   "companies": [
