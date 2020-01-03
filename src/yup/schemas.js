@@ -29,7 +29,7 @@ const schemas = {
     iso2Code: Yup.string()
       .matches(/^[A-Za-z]{2,3}$/, 'ISO2 code is not valid.'),
     countryRegion: Yup.string()
-      .matches(/^[A-Za-z\s]{0,}$/, 'Country region name is not valid.'),
+      .matches(/^[A-Za-zĆćČčĐđŠšŽž\.\s]{0,}$/, 'Country region name is not valid.'),
     longitude: Yup.number()
       .min(-180, 'Longitude  must be ${min} or higher!')
       .max(180, 'Longitude must be ${max} or lower!'),
@@ -88,7 +88,7 @@ const schemas = {
     iso2Code: Yup.string()
       .matches(/^[A-Za-z]{2,3}$/, 'ISO2 code is not valid.'),
     countryRegion: Yup.string()
-      .matches(/^[A-Za-z\s]{0,}$/, 'Country region name is not valid.'),
+      .matches(/^[A-Za-zĆćČčĐđŠšŽž\.\s]{0,}$/, 'Country region name is not valid.'),
     longitude: Yup.number()
       .min(-180, 'Longitude  must be ${min} or higher!')
       .max(180, 'Longitude must be ${max} or lower!'),
@@ -153,7 +153,7 @@ const schemas = {
     iso2Code: Yup.string()
       .matches(/^[A-Za-z]{2,3}$/, 'ISO2 code is not valid.'),
     countryRegion: Yup.string()
-      .matches(/^[A-Za-z\s]{0,}$/, 'Country region name is not valid.'),
+      .matches(/^[A-Za-zĆćČčĐđŠšŽž\.\s]{0,}$/, 'Country region name is not valid.'),
     longitude: Yup.number()
       .min(-180, 'Longitude  must be ${min} or higher!')
       .max(180, 'Longitude must be ${max} or lower!'),
@@ -174,7 +174,7 @@ const schemas = {
     iso2Code: Yup.string()
       .matches(/^[A-Za-z]{2,3}$/, 'ISO2 code is not valid.'),
     countryRegion: Yup.string()
-      .matches(/^[A-Za-z\s]{0,}$/, 'Country region name is not valid.'),
+      .matches(/^[A-Za-zĆćČčĐđŠšŽž\.\s]{0,}$/, 'Country region name is not valid.'),
     longitude: Yup.number()
       .min(-180, 'Longitude  must be ${min} or higher!')
       .max(180, 'Longitude must be ${max} or lower!'),
@@ -218,7 +218,7 @@ const schemas = {
     iso2Code: Yup.string()
       .matches(/^[A-Za-z]{2,3}$/, 'ISO2 code is not valid.'),
     countryRegion: Yup.string()
-      .matches(/^[A-Za-z\s]{0,}$/, 'Country region name is not valid.'),
+      .matches(/^[A-Za-zĆćČčĐđŠšŽž\.\s]{0,}$/, 'Country region name is not valid.'),
     longitude: Yup.number()
       .min(-180, 'Longitude  must be ${min} or higher!')
       .max(180, 'Longitude must be ${max} or lower!'),
