@@ -28,4 +28,50 @@ const clear = () => {
   db.write()
 }
 
-export { reset, clear }
+const addPerson = (person) => {
+  // create new id
+  // alternatives are shortid and lodash-id
+  const personIds = db.get('persons').map('id').value()
+  const accountIds = db.get('accounts').map('id').value()
+
+  let newPersonId;
+  let newAccountId;
+
+  // sort reverse so you can access largest id by index 0
+  if (personIds.length > 0) {
+    personIds.sort((a, b) => b - a)
+    newPersonId = personIds[0] + 1
+  } else {
+    newPersonId = 1
+  }
+
+  if (accountIds.length > 0) {
+    accountIds.sort((a, b) => b - a)
+    newAccountId = accountIds[0] + 1
+  } else {
+    newAccountId = 1
+  }
+
+  // create new entities
+  const newPerson = {...person, id: newPersonId}
+  const newAccount = {
+    username: newPerson.username,
+    password: newPerson.password,
+    confirmedPassword: newPerson.confirmedPassword,
+    accessRole: 'ROLE_USER',
+    user: {...newPerson},
+    id: newAccountId
+  }
+
+  // write data to person
+  db.get('persons').push({...newPerson}).write()
+  // write data to account
+  db.get('accounts').push({...newAccount}).write()
+
+  // return created entity with id 
+  return {...newPerson}
+}
+
+
+
+export { reset, clear, addPerson }
