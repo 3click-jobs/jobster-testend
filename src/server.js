@@ -9,7 +9,7 @@ import { dbschemas } from './dbqueries/dbschemas'
 const middleware = require('./yup/middleware')
 import schemas from './yup/schemas'
 
-import { reset, clear, addPerson } from './dbutils/dbutils'
+import { reset, clear, addPerson, addCompany } from './dbutils/dbutils'
 import { verifyCredentials } from './dbqueries/authentication'
 
 server.use(middlewares)
@@ -161,6 +161,15 @@ server.use((req, res, next) => {
         // This is where i must write to the 'database' by hand...
 
         const result = addPerson(req.body)
+        res.status(201).json({ ...result }).end()
+
+        // without this line manual changes won't be reflected!
+        router.db.read('src/db/db.json')
+        return
+      }      
+      case '/jobster/users/companies': {
+        
+        const result = addCompany(req.body)
         res.status(201).json({ ...result }).end()
 
         // without this line manual changes won't be reflected!

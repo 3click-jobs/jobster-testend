@@ -72,6 +72,48 @@ const addPerson = (person) => {
   return {...newPerson}
 }
 
+const addCompany = (company) => {
+  // create new id
+  // alternatives are shortid and lodash-id
+  const companyIds = db.get('companies').map('id').value()
+  const accountIds = db.get('accounts').map('id').value()
 
+  let newCompanyId;
+  let newAccountId;
 
-export { reset, clear, addPerson }
+  // sort reverse so you can access largest id by index 0
+  if (companyIds.length > 0) {
+    companyIds.sort((a, b) => b - a)
+    newCompanyId = companyIds[0] + 1
+  } else {
+    newCompanyId = 1
+  }
+
+  if (accountIds.length > 0) {
+    accountIds.sort((a, b) => b - a)
+    newAccountId = accountIds[0] + 1
+  } else {
+    newAccountId = 1
+  }
+
+  // create new entities
+  const newCompany = {...company, id: newCompanyId}
+  const newAccount = {
+    username: newCompany.username,
+    password: newCompany.password,
+    confirmedPassword: newCompany.confirmedPassword,
+    accessRole: 'ROLE_USER',
+    user: {...newCompany},
+    id: newAccountId
+  }
+
+  // write data to person
+  db.get('companies').push({...newCompany}).write()
+  // write data to account
+  db.get('accounts').push({...newAccount}).write()
+
+  // return created entity with id 
+  return {...newCompany}
+}
+
+export { reset, clear, addPerson, addCompany }
